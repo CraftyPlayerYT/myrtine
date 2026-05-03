@@ -694,12 +694,12 @@ const LoadingTimer = () => {
     const id = setInterval(() => setSecs(s => s+1), 1000);
     return () => clearInterval(id);
   }, []);
-  const pct = Math.min(100, Math.round((secs/100)*100));
+  const pct = Math.min(100, Math.round((secs/500)*100));
   return (
     <div style={{marginTop:20,maxWidth:280,margin:'20px auto 0'}}>
       <div style={{display:'flex',justifyContent:'space-between',marginBottom:6,fontSize:'clamp(10px,0.85vw,12px)',color:C.muted}}>
         <span>Tentative en cours…</span>
-        <span style={{fontWeight:600,color:secs>60?'#c0392b':C.navy}}>{secs}s / 100s max</span>
+        <span style={{fontWeight:600,color:secs>300?'#c0392b':C.navy}}>{secs}s / 500s max</span>
       </div>
       <div style={{height:5,background:C.creamDk,borderRadius:5,overflow:'hidden'}}>
         <div style={{
@@ -708,12 +708,12 @@ const LoadingTimer = () => {
           width:`${pct}%`,transition:'width 1s linear'
         }}/>
       </div>
-      {secs > 15 && secs <= 60 && (
+      {secs > 30 && secs <= 300 && (
         <p style={{fontSize:'clamp(10px,0.8vw,11px)',color:C.muted,marginTop:8,textAlign:'center'}}>
           Le serveur est en train de démarrer, encore un peu de patience…
         </p>
       )}
-      {secs > 60 && (
+      {secs > 300 && (
         <p style={{fontSize:'clamp(10px,0.8vw,11px)',color:'#c0392b',marginTop:8,textAlign:'center'}}>
           Le démarrage est plus long que prévu, merci de continuer à patienter…
         </p>
@@ -777,7 +777,7 @@ ${A.contact_nom||''}`;
     }
 
     // Polling robuste : retente toutes les 8s pendant 100s max (Render cold start x2)
-    const MAX_WAIT = 100000;
+    const MAX_WAIT = 500000;
     const RETRY_INTERVAL = 8000;
     const started = Date.now();
 
@@ -902,7 +902,7 @@ ${A.contact_nom||''}`;
       <p style={{color:C.muted,fontSize:'clamp(13px,1vw,15px)',lineHeight:1.6}}>
         Votre client mail s'est ouvert.<br/>
         <span style={{fontSize:'clamp(11px,0.85vw,13px)'}}>
-          Le serveur peut prendre <strong>jusqu'à 1 minute 40</strong> à répondre s'il vient de se réveiller.<br/>
+          Le serveur peut prendre <strong>jusqu'à 8 minutes 20</strong> à répondre s'il vient de se réveiller.<br/>
           Merci de <strong>ne pas fermer cette fenêtre</strong> et de patienter.
         </span>
       </p>
