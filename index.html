@@ -11,7 +11,7 @@
     gtag('config', 'G-NWZ70DE2YM');
   </script>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>Myrtine — Aides financières entreprises, financements publics France & Europe</title>
   <meta name="description" content="Myrtine identifie les aides financières pour votre entreprise : financements publics français et européens (BPI France, France 2030, FEDER, FEADER) pour les entreprises Made in France. Diagnostic flash gratuit en moins de 30 minutes."/>
   <meta name="keywords" content="Myrtine, aides financières entreprises, financements publics, fonds européens, fonds français, subventions entreprises, BPI France, France 2030, FEDER, FEADER, Made in France, diagnostic flash, aides publiques création entreprise"/>
@@ -617,7 +617,7 @@ const Footer = () => (
       <Logo height={44}/>
       <div style={{fontSize:'clamp(11px,1vw,13px)'}}>
         © 2026 <GreenIN text="MyrtINe"/> &nbsp;·&nbsp;
-        <a href="mailto:contact@myrtine.fr" style={{color:'rgba(255,255,255,0.4)',textDecoration:'none'}}>contact@myrtine.fr</a>
+        <a href="mailto:contact.myrtine@gmail.com" style={{color:'rgba(255,255,255,0.4)',textDecoration:'none'}}>contact.myrtine@gmail.com</a>
       </div>
     </div>
   </footer>
@@ -857,8 +857,15 @@ const SubmitScreen = ({ answers, onClose }) => {
           return;
         }
         const data = await reponse.json();
-        if (data && String(data.etat_de_la_requete).toLowerCase() === 'recue') {
+        const etat = String(data?.etat_de_la_requete).toLowerCase();
+        if (etat === 'recue') {
           setStatus('recu');
+        } else if (etat === 'demande_illicite') {
+          setStatus('illicite');
+        } else if (etat === 'demande_improbable') {
+          setStatus('improbable');
+        } else if (etat === 'informations_manquantes') {
+          setStatus('incomplet');
         } else {
           setStatus('error');
           setErrorMsg('');
@@ -888,6 +895,40 @@ const SubmitScreen = ({ answers, onClose }) => {
       <h2 style={{fontSize:'clamp(17px,1.8vw,22px)',color:C.navy,marginBottom:12,fontFamily:'Lora,serif'}}>Votre demande a été reçue !</h2>
       <p style={{color:C.muted,fontSize:'clamp(13px,1vw,15px)',lineHeight:1.75,maxWidth:420,margin:'0 auto 24px'}}>
         Vous recevrez votre <strong>diagnostic flash</strong> par email en moins de <strong>5 minutes</strong>. Nous reviendrons vers vous sous <strong>48 heures</strong>.
+      </p>
+      <AnimBtn variant="navy" onClick={onClose}>Fermer</AnimBtn>
+    </div>
+  );
+
+  if (status==='illicite') return (
+    <div className="composer-inner" style={{padding:'clamp(32px,5vh,52px) clamp(20px,4vw,44px)',textAlign:'center'}}>
+      <div style={{fontSize:52,marginBottom:16}}>🚫</div>
+      <h2 style={{fontSize:'clamp(16px,1.6vw,20px)',color:C.navy,marginBottom:12,fontFamily:'Lora,serif'}}>Demande non traitée</h2>
+      <p style={{color:C.muted,fontSize:'clamp(13px,1vw,15px)',lineHeight:1.75,maxWidth:420,margin:'0 auto 24px'}}>
+        Votre demande a bien été reçue, mais elle ne sera pas traitée car elle a été jugée illicite.
+      </p>
+      <AnimBtn variant="navy" onClick={onClose}>Fermer</AnimBtn>
+    </div>
+  );
+
+  if (status==='improbable') return (
+    <div className="composer-inner" style={{padding:'clamp(32px,5vh,52px) clamp(20px,4vw,44px)',textAlign:'center'}}>
+      <div style={{fontSize:52,marginBottom:16}}>🤔</div>
+      <h2 style={{fontSize:'clamp(16px,1.6vw,20px)',color:C.navy,marginBottom:12,fontFamily:'Lora,serif'}}>Demande improbable</h2>
+      <p style={{color:C.muted,fontSize:'clamp(13px,1vw,15px)',lineHeight:1.75,maxWidth:420,margin:'0 auto 16px'}}>
+        Votre demande a été jugée improbable. Si vous pensez qu'il s'agit d'une erreur, contactez-nous :
+      </p>
+      <a href="mailto:contact@myrtine.fr?subject=Demande%20improbable" style={{color:C.green,fontWeight:600,fontSize:'clamp(13px,1vw,15px)',display:'block',marginBottom:24}}>contact@myrtine.fr</a>
+      <AnimBtn variant="navy" onClick={onClose}>Fermer</AnimBtn>
+    </div>
+  );
+
+  if (status==='incomplet') return (
+    <div className="composer-inner" style={{padding:'clamp(32px,5vh,52px) clamp(20px,4vw,44px)',textAlign:'center'}}>
+      <div style={{fontSize:52,marginBottom:16}}>📋</div>
+      <h2 style={{fontSize:'clamp(16px,1.6vw,20px)',color:C.navy,marginBottom:12,fontFamily:'Lora,serif'}}>Informations manquantes</h2>
+      <p style={{color:C.muted,fontSize:'clamp(13px,1vw,15px)',lineHeight:1.75,maxWidth:420,margin:'0 auto 24px'}}>
+        Des informations sont manquantes ou mal remplies dans votre demande. Merci de vérifier et de réessayer.
       </p>
       <AnimBtn variant="navy" onClick={onClose}>Fermer</AnimBtn>
     </div>
