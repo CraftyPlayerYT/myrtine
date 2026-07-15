@@ -844,11 +844,6 @@ const SubmitScreen = ({ answers, onClose }) => {
     })
       .then(async reponse => {
         clearTimeout(tid);
-        if (reponse.status >= 500) {
-          setStatus('error');
-          setErrorMsg('serveur indisponible');
-          return;
-        }
         const contentType = reponse.headers.get('content-type') || '';
         if (!contentType.includes('application/json')) {
           setStatus('error');
@@ -856,6 +851,11 @@ const SubmitScreen = ({ answers, onClose }) => {
           return;
         }
         const data = await reponse.json();
+        if (!reponse.ok) {
+          setStatus('error');
+          setErrorMsg(data?.message || data?.etat_de_la_requete || 'serveur indisponible');
+          return;
+        }
         const etat = String(data?.etat_de_la_requete).toLowerCase();
         if (etat === 'recue') {
           setStatus('recu');
