@@ -4,4 +4,8 @@
     <loc>https://myrtine.fr/</loc>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://myrtine.fr/favicon.png</loc>
+    <priority>0.3</priority>
+  </url>
 </urlset>
