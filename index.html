@@ -1,4 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NWZ70DE2YM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
+    gtag('config', 'G-NWZ70DE2YM');
+  </script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>Myrtine — Diagnostic en moins de 48 heures, financements publics France & Europe</title>
+  <meta name="description" content="Myrtine identifie les aides financières pour votre entreprise : financements publics français et européens adaptés aux entreprises Made in France. Diagnostic gratuit avec retour par mail en moins de 48 heures."/>
+  <meta name="keywords" content="Myrtine, aides financières entreprises, financements publics, fonds européens, fonds français, subventions entreprises, BPI France, France 2030, Made in France, diagnostic moins de 48 heures, aides publiques création entreprise"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://myrtine.fr/"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Myrtine — Diagnostic en moins de 48 heures"/>
+  <meta property="og:description" content="Diagnostic gratuit : identifiez les aides financières et fonds publics français et européens auxquels votre entreprise peut prétendre, avec retour par mail en moins de 48 heures."/>
+  <meta property="og:url" content="https://myrtine.fr/"/>
+  <meta property="og:locale" content="fr_FR"/>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="Myrtine — Diagnostic en moins de 48 heures"/>
+  <meta name="twitter:description" content="Diagnostic gratuit : identifiez les aides financières et fonds publics français et européens auxquels votre entreprise peut prétendre, avec retour par mail en moins de 48 heures."/>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Myrtine",
+    "url": "https://myrtine.fr/",
+    "description": "Myrtine accompagne les entreprises Made in France dans l'obtention d'aides financières, de financements publics et de fonds européens.",
+    "areaServed": "FR",
+    "knowsAbout": ["Aides financières entreprises", "Financements publics", "Fonds européens", "Fonds français", "Subventions entreprises", "BPI France", "France 2030"]
+  }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <link rel="icon" href="/favicon.png" sizes="any"/>
+  <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png"/>
+  <link rel="apple-touch-icon" href="/favicon.png"/>
+  <link rel="icon" type="image/png" href="data:image/png;base64,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"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #2B3870; --navy-dk: #1a2250;
+      --green: #4A7A2E; --green-lt: #6aae40;
+      --cream: #F5F3EE; --cream-dk: #E8E4DA;
+      --text: #1C2035; --muted: #6B7080;
+      --white: #FDFCF9;
+      --px: clamp(16px,5vw,120px);
+      --hero-pt: clamp(90px,10vh,160px);
+      /* Zones sûres (encoche / Dynamic Island / barres de nav gestuelles) */
+      --safe-t: env(safe-area-inset-top, 0px);
+      --safe-b: env(safe-area-inset-bottom, 0px);
+      --safe-l: env(safe-area-inset-left, 0px);
+      --safe-r: env(safe-area-inset-right, 0px);
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+    h1,h2,h3 { font-family: 'Lora', serif; }
+    ::selection { background: var(--green); color: #fff; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--cream-dk); }
+    ::-webkit-scrollbar-thumb { background: var(--navy); border-radius: 3px; }
+
+    /* Anti-sélection / anti-drag */
+    * { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-user-drag: none; }
+    input, textarea, [contenteditable] { -webkit-user-select: text; -moz-user-select: text; -ms-user-select: text; user-select: text; }
+    img { pointer-events: none; -webkit-user-drag: none; }
+
+    @keyframes floatBlob { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-14px) scale(1.04)} }
+    @keyframes modalIn   { from{opacity:0;transform:perspective(900px) translateY(36px) rotateX(7deg) scale(.95)} to{opacity:1;transform:perspective(900px) translateY(0) rotateX(0) scale(1)} }
+    @keyframes ripple    { to{transform:scale(4);opacity:0} }
+    @keyframes slideIn   { from{opacity:0;transform:translateY(18px) rotateX(3deg)} to{opacity:1;transform:translateY(0) rotateX(0)} }
+    @keyframes spin      { to{transform:rotate(360deg)} }
+
+    .reveal {
+      opacity: 0; transform: perspective(900px) translateY(60px) rotateX(22deg) scale(0.93);
+      transition: opacity .7s cubic-bezier(0.22,1,.36,1), transform .7s cubic-bezier(0.22,1,.36,1);
+      transform-origin: 50% 100%; will-change: transform, opacity;
+    }
+    .reveal.visible { opacity: 1; transform: perspective(900px) translateY(0) rotateX(0) scale(1); }
+    .reveal-left {
+      opacity: 0; transform: perspective(900px) translateX(-60px) rotateY(18deg);
+      transition: opacity .7s cubic-bezier(0.22,1,.36,1), transform .7s cubic-bezier(0.22,1,.36,1);
+      transform-origin: 100% 50%; will-change: transform, opacity;
+    }
+    .reveal-left.visible { opacity: 1; transform: perspective(900px) translateX(0) rotateY(0); }
+    .reveal-right {
+      opacity: 0; transform: perspective(900px) translateX(60px) rotateY(-18deg);
+      transition: opacity .7s cubic-bezier(0.22,1,.36,1), transform .7s cubic-bezier(0.22,1,.36,1);
+      transform-origin: 0% 50%; will-change: transform, opacity;
+    }
+    .reveal-right.visible { opacity: 1; transform: perspective(900px) translateX(0) rotateY(0); }
+    .scroll-tilt { will-change: transform; transition: transform .05s linear; }
+
+    .nav-links { display: flex; align-items: center; gap: clamp(14px,2vw,32px); }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; margin: 5px 0; transition: all .3s; }
+    .mobile-menu { display: none; }
+    .hero-section { min-height: 100vh; min-height: 100dvh; }
+
+    /* ══════════════════════════════════════════════════════════════
+       CADRAGE UNIVERSEL — paliers couvrant tous les smartphones,
+       tablettes, PC et téléviseurs (Apple, Samsung, Redmi/Xiaomi,
+       Google, etc). Le dimensionnement fluide (clamp/vw) ci-dessus
+       s'adapte déjà en continu ; ces paliers affinent la mise en page
+       (colonnes, menu, espacements) aux largeurs réelles du marché.
+       Tout écran non couvert explicitement hérite automatiquement du
+       palier le plus proche — c'est le cadrage automatique de secours.
+       ══════════════════════════════════════════════════════════════ */
+
+    /* Écran plié / cover (Galaxy Z Fold fermé, ~280-320px) */
+    @media (max-width: 319px) {
+      :root { --px: 10px; }
+      h1 { font-size: 1.5rem !important; }
+    }
+
+    /* Petits téléphones : iPhone SE 1G/5/5s, très anciens Android (320-359px) */
+    @media (min-width: 320px) and (max-width: 359px) {
+      :root { --px: 14px; }
+      h1 { font-size: clamp(1.5rem, 8vw, 1.9rem) !important; }
+    }
+
+    /* Téléphones compacts : Galaxy S/A/Redmi entrée de gamme, iPhone mini (360-389px) */
+    @media (min-width: 360px) and (max-width: 389px) {
+      :root { --px: 16px; }
+    }
+
+    /* Téléphones standards : iPhone 12/13/14/15/16, Pixel, Galaxy S21-S24 (390-411px) */
+    @media (min-width: 390px) and (max-width: 411px) {
+      :root { --px: 18px; }
+    }
+
+    /* Grands téléphones : Galaxy Note/S+/Ultra, Pixel XL, Redmi Note (412-479px) */
+    @media (min-width: 412px) and (max-width: 479px) {
+      :root { --px: 20px; }
+    }
+
+    /* Phablettes / Max / Pro Max / Plus : iPhone Pro Max, Galaxy Ultra (480-599px) */
+    @media (min-width: 480px) and (max-width: 599px) {
+      :root { --px: 24px; }
+    }
+
+    /* Pliables dépliés / petites tablettes (600-767px) */
+    @media (min-width: 600px) and (max-width: 767px) {
+      :root { --px: 32px; }
+    }
+
+    /* Tablettes portrait : iPad mini/standard, Galaxy Tab (768-819px) */
+    @media (min-width: 768px) and (max-width: 819px) {
+      :root { --px: 40px; }
+    }
+
+    /* Tablettes portrait grandes : iPad Air/Pro 11" (820-1023px) */
+    @media (min-width: 820px) and (max-width: 1023px) {
+      :root { --px: 48px; }
+    }
+
+    /* Tablettes paysage / iPad Pro 12.9" / petits laptops (1024-1279px) */
+    @media (min-width: 1024px) and (max-width: 1279px) {
+      :root { --px: 56px; }
+    }
+
+    /* Laptops standards (1280-1535px) */
+    @media (min-width: 1280px) and (max-width: 1535px) {
+      :root { --px: 72px; }
+    }
+
+    /* Desktop Full HD / laptops haute résolution (1536-1919px) */
+    @media (min-width: 1536px) and (max-width: 1919px) {
+      :root { --px: 96px; }
+    }
+
+    /* Desktop Full HD large (1920-2559px) */
+    @media (min-width: 1920px) and (max-width: 2559px) {
+      :root { --px: 120px; }
+    }
+
+    /* Moniteurs QHD / 1440p / petites TV (2560-3839px) */
+    @media (min-width: 2560px) {
+      html { font-size: 20px; }
+      :root { --px: 200px; }
+    }
+
+    /* TV 4K UHD (3840-7679px) */
+    @media (min-width: 3840px) {
+      html { font-size: 28px; }
+      :root { --px: 320px; }
+    }
+
+    /* TV 8K (7680px et plus) */
+    @media (min-width: 7680px) {
+      html { font-size: 44px; }
+      :root { --px: 480px; }
+    }
+
+    /* Layout structurel : tablette et en-dessous */
+    @media (max-width: 1024px) {
+      .why-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+      .why-cards { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Layout structurel : mobile (téléphones jusqu'aux phablettes) */
+    @media (max-width: 768px) {
+      .nav-links { display: none !important; }
+      .hamburger { display: block !important; }
+      .mobile-menu.open { display: flex; flex-direction: column; position: fixed; top: calc(70px + var(--safe-t)); left: 0; right: 0; background: rgba(245,243,238,0.98); backdrop-filter: blur(16px); padding: 20px calc(24px + var(--safe-r)) 28px calc(24px + var(--safe-l)); gap: 18px; border-bottom: 1px solid rgba(43,56,112,0.08); z-index: 190; }
+      .mobile-menu a, .mobile-menu button { width: 100%; text-align: left; }
+      .hero-btns { flex-direction: column !important; align-items: stretch !important; }
+      .hero-btns a, .hero-btns button { text-align: center !important; }
+      .steps-grid { grid-template-columns: 1fr !important; }
+      .why-cards { grid-template-columns: 1fr !important; }
+      .modal-inner { padding: 24px 20px !important; border-radius: 16px !important; }
+      .composer-inner { padding: 24px 20px !important; }
+    }
+    @media (max-width: 480px) {
+      .stats-row { flex-direction: column !important; align-items: center !important; }
+      .step-card { padding: 24px 20px !important; }
+    }
+
+    /* Téléphones en mode paysage (hauteur réduite — toutes marques) */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .modal-inner { max-height: 94vh !important; max-height: 94dvh !important; }
+      .hero-section { min-height: auto !important; padding-top: calc(80px + var(--safe-t)) !important; padding-bottom: 32px !important; }
+    }
+
+    /* Appareils tactiles : neutraliser les effets de tilt liés au survol
+       (évite un tilt qui reste "collé" après un tap sur mobile/tablette) */
+    @media (hover: none) {
+      .scroll-tilt { transform: none !important; }
+      .reveal, .reveal-left, .reveal-right { transition-duration: .5s; }
+    }
+
+    /* Respect de la préférence "réduire les animations" (tous appareils) */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+      .reveal, .reveal-left, .reveal-right { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
 const { useState, useEffect, useRef } = React;
 
 const C = {
@@ -854,3 +1102,7 @@ const App = () => {
 };
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
+
