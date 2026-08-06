@@ -424,6 +424,13 @@
       line-height: 1.85;
     }
     .story-card p + p { margin-top: 18px; }
+    /* Même style typographique que le texte d’introduction du hero. */
+    .story-card-lead p {
+      color: var(--muted);
+      font-size: clamp(15px,1.45vw,20px);
+      line-height: 1.78;
+      text-wrap: pretty;
+    }
     .story-card-wide { grid-column: 1 / -1; }
     .story-card-green {
       background: linear-gradient(135deg, rgba(74,122,46,.11), rgba(245,243,238,.82));
@@ -607,7 +614,20 @@
     @media (max-width: 480px) {
       :root { --px: 18px; }
       .hero h1 { font-size: clamp(1.6rem,8.8vw,2.4rem); }
+      .hero-lead, .story-card-lead p {
+        font-size: clamp(14.5px,4vw,17px);
+        line-height: 1.72;
+      }
       .footer-inner { justify-content: center; text-align: center; }
+    }
+    /* iPhone 14 Plus et écrans proches de 428 px de large. */
+    @media (min-width: 414px) and (max-width: 430px) {
+      .hero-lead, .story-card-lead p { font-size: 16px; }
+    }
+    /* Très petits smartphones et écrans pliables fermés. */
+    @media (max-width: 359px) {
+      :root { --px: 14px; }
+      .hero-lead, .story-card-lead p { font-size: 14.5px; }
     }
     @media (max-height: 500px) and (orientation: landscape) {
       .hero { min-height: auto; padding-top: calc(92px + var(--safe-t)); }
@@ -679,19 +699,19 @@
           <span class="founder-role">Fondatrice et dirigeante de Myrtine</span>
         </div>
         <h1>Un engagement qui change de forme, pas de cap.</h1>
-        <p class="hero-lead">De l’administration publique à l’accompagnement des entreprises, une même conviction demeure : les projets utiles aux territoires méritent d’être mieux soutenus.</p>
+        <p class="hero-lead">De l’administration publique à l’accompagnement des entreprises, une même conviction <span class="keep-with-colon">demeure&nbsp;:</span> les projets utiles aux territoires méritent d’être mieux soutenus.</p>
       </div>
     </section>
 
     <section class="story-section" aria-label="Histoire de Myrtine">
       <div class="section-inner">
         <div class="story-grid">
-          <article class="story-card reveal-left">
+          <article class="story-card story-card-lead reveal-left">
             <p>Pendant 15 ans, j’ai servi l’intérêt général au cœur de l’État.</p>
             <p>En administration centrale et territoriale, j'ai travaillé au plus près des arbitrages budgétaires et de la réglementation économique.</p>
           </article>
 
-          <article class="story-card story-card-green reveal-right">
+          <article class="story-card story-card-green story-card-lead reveal-right">
             <p>Aujourd'hui, je continue cet engagement sous une nouvelle forme : donner un coup de boost aux entreprises qui créent de la valeur et renforcent la souveraineté de nos territoires.</p>
           </article>
 
