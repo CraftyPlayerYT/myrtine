@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8"/>
+  <script>document.documentElement.classList.add('js','page-entering');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>À propos — Myrtine</title>
   <meta name="description" content="Découvrez l’histoire de Myrtine et l’expérience d’Alice CHATEAU-MOREAU au service des projets et des territoires."/>
@@ -271,6 +272,52 @@
       letter-spacing: .1em;
       text-transform: uppercase;
     }
+    .founder-intro {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      margin-bottom: clamp(18px,2.4vw,28px);
+      padding: 11px 18px;
+      border: 1px solid rgba(43,56,112,.1);
+      border-radius: 14px;
+      background: rgba(255,255,255,.62);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 8px 24px rgba(43,56,112,.07);
+    }
+    .founder-name {
+      color: var(--navy);
+      font-family: 'Lora', serif;
+      font-size: clamp(15px,1.5vw,20px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -.01em;
+    }
+    .founder-role {
+      color: var(--green);
+      font-size: clamp(10px,.95vw,13px);
+      font-weight: 700;
+      line-height: 1.35;
+      letter-spacing: .035em;
+      text-transform: uppercase;
+    }
+    .button-icon,
+    .external-icon {
+      flex: 0 0 auto;
+      width: 1.08em;
+      height: 1.08em;
+      display: block;
+    }
+    .button-icon { margin-right: 8px; }
+    .linkedin-official-logo {
+      width: 21px;
+      height: 21px;
+      object-fit: contain;
+      object-position: center;
+    }
+    .external-icon { margin-left: 8px; }
+
     .hero h1 {
       color: var(--navy);
       font-size: clamp(2.2rem,5.6vw,5rem);
@@ -561,6 +608,24 @@
       }
       .reveal, .reveal-left, .reveal-right { opacity: 1 !important; transform: none !important; }
     }
+
+
+    /* Transition douce entre l’accueil et la page À propos */
+    @keyframes pageEnter {
+      from { opacity: 0; transform: translateY(12px) scale(.992); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes pageExit {
+      from { opacity: 1; transform: translateY(0) scale(1); }
+      to   { opacity: 0; transform: translateY(-10px) scale(.992); }
+    }
+    html.js.page-entering body { opacity: 0; transform: translateY(12px) scale(.992); }
+    html.js.page-ready body { animation: pageEnter .42s cubic-bezier(.22,1,.36,1) both; }
+    html.js.page-leaving body { animation: pageExit .24s ease both; pointer-events: none; }
+    @view-transition { navigation: auto; }
+    ::view-transition-old(root) { animation: pageExit .24s ease both; }
+    ::view-transition-new(root) { animation: pageEnter .42s cubic-bezier(.22,1,.36,1) both; }
+
   </style>
 </head>
 <body>
@@ -573,7 +638,7 @@
       <a class="nav-link" href="/#comment">Comment ça marche</a>
       <a class="nav-link" href="/#pourquoi">Pourquoi Myrtine</a>
       <a class="nav-link" href="/a-propos/index.html" aria-current="page">À propos</a>
-      <a class="button button-navy nav-cta" href="/">Diagnostic</a>
+      <a class="button button-navy nav-cta" href="/#diagnostic">Diagnostic</a>
     </div>
 
     <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
@@ -585,7 +650,7 @@
     <a class="nav-link" href="/#comment">Comment ça marche</a>
     <a class="nav-link" href="/#pourquoi">Pourquoi Myrtine</a>
     <a class="nav-link" href="/a-propos/index.html" aria-current="page">À propos</a>
-    <a class="button button-green" href="/">Diagnostic</a>
+    <a class="button button-green" href="/#diagnostic">Diagnostic</a>
   </div>
 
   <main>
@@ -593,11 +658,21 @@
       <div class="blob blob-one"></div>
       <div class="blob blob-two"></div>
       <div class="hero-inner" id="heroScene">
+        <div class="founder-intro">
+          <span class="founder-name">Alice CHATEAU-MOREAU</span>
+          <span class="founder-role">Fondatrice et dirigeante de Myrtine</span>
+        </div>
         <h1>Un engagement qui change de forme, pas de cap.</h1>
         <p class="hero-lead">De l’administration publique à l’accompagnement des entreprises, une même conviction demeure : les projets utiles aux territoires méritent d’être mieux soutenus.</p>
         <div class="hero-actions">
-          <a class="button button-green" href="/">Découvrir le diagnostic</a>
-          <a class="button button-ghost" href="https://www.linkedin.com/in/alice-chateau-moreau-41116a336" target="_blank" rel="noopener noreferrer">Profil LinkedIn</a>
+          <a class="button button-green" href="/#diagnostic">Découvrir le diagnostic</a>
+          <a class="button button-ghost" href="https://www.linkedin.com/in/alice-chateau-moreau-41116a336" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir le profil LinkedIn d’Alice CHATEAU-MOREAU dans un nouvel onglet">
+            <img class="button-icon linkedin-official-logo" src="https://static.licdn.com/aero-v1/sc/h/4zqr0f9jf98vi2nkijyc3bex2" alt="" aria-hidden="true"/>
+            <span>Profil LinkedIn</span>
+            <svg class="external-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M8 16 16 8M10 8h6v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
         </div>
       </div>
     </section>
@@ -672,6 +747,47 @@
   </footer>
 
   <script>
+
+    // Transition entre les deux pages, avec repli compatible Safari/iPhone.
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const finishPageEntry = () => {
+      document.documentElement.classList.remove('page-entering', 'page-leaving');
+      document.documentElement.classList.add('page-ready');
+    };
+    requestAnimationFrame(() => requestAnimationFrame(finishPageEntry));
+    window.addEventListener('pageshow', finishPageEntry);
+
+    document.addEventListener('click', event => {
+      const link = event.target.closest('a[href]');
+      if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      if (link.target && link.target !== '_self') return;
+      if (link.hasAttribute('download')) return;
+
+      const destination = new URL(link.href, window.location.href);
+      if (destination.origin !== window.location.origin) return;
+
+      const normalizePath = path => {
+        const normalized = path.replace(/\/index\.html$/, '/');
+        return normalized === '/a-propos' ? '/a-propos/' : normalized;
+      };
+      const currentPath = normalizePath(window.location.pathname);
+      const nextPath = normalizePath(destination.pathname);
+      const isHome = path => path === '/';
+      const isAbout = path => path === '/a-propos/';
+      if (!(isHome(nextPath) || isAbout(nextPath))) return;
+
+      // Les ancres de la page courante doivent défiler normalement, sans transition.
+      if (nextPath === currentPath && destination.hash) return;
+
+      if (prefersReducedMotion.matches) return;
+      event.preventDefault();
+      document.documentElement.classList.remove('page-ready');
+      document.documentElement.classList.add('page-leaving');
+      window.setTimeout(() => {
+        window.location.assign(destination.href);
+      }, 220);
+    });
+
     const nav = document.getElementById('siteNav');
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
