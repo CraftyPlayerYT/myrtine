@@ -583,7 +583,7 @@ const WhyMyrtine = () => {
         <div className="why-grid" style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'clamp(32px,5vw,80px)',alignItems:'center'}}>
           <div className="reveal-left">
             <div style={{fontSize:'clamp(10px,1vw,12px)',fontWeight:700,color:C.green,letterSpacing:'0.1em',textTransform:'uppercase',marginBottom:12}}>Pourquoi nous choisir</div>
-            <h2 style={{fontSize:'clamp(1.6rem,3vw,2.4rem)',color:C.navy,marginBottom:18,lineHeight:1.2}}>Un allié dédié à<br/>votre croissance</h2>
+            <h2 style={{fontSize:'clamp(1.6rem,3vw,2.4rem)',color:C.navy,marginBottom:18,lineHeight:1.2}}>Une alliée dédiée à<br/>votre croissance</h2>
             <p style={{color:C.muted,fontSize:'clamp(13px,1.1vw,16px)',lineHeight:1.75,marginBottom:26}}>
               Développer un projet en France ou en Europe avec des produits locaux, c'est un choix courageux.
               Myrtine s'assure que vous bénéficiez de toutes les aides auxquelles vous avez droit.
@@ -1126,15 +1126,24 @@ const App = () => {
   };
 
   useEffect(() => {
-    const openFromHash = () => {
-      if (window.location.hash === '#diagnostic') setShowModal(true);
+    const openFromLocation = () => {
+      let requestedFromAbout = false;
+      try {
+        requestedFromAbout = sessionStorage.getItem('myrtine_open_diagnostic') === '1';
+        if (requestedFromAbout) sessionStorage.removeItem('myrtine_open_diagnostic');
+      } catch {}
+      if (window.location.hash === '#diagnostic' || requestedFromAbout) setShowModal(true);
     };
-    openFromHash();
-    window.addEventListener('hashchange', openFromHash);
-    window.addEventListener('popstate', openFromHash);
+    openFromLocation();
+    window.addEventListener('hashchange', openFromLocation);
+    window.addEventListener('popstate', openFromLocation);
+    window.addEventListener('pageshow', openFromLocation);
+    window.addEventListener('myrtine:open-diagnostic', openFromLocation);
     return () => {
-      window.removeEventListener('hashchange', openFromHash);
-      window.removeEventListener('popstate', openFromHash);
+      window.removeEventListener('hashchange', openFromLocation);
+      window.removeEventListener('popstate', openFromLocation);
+      window.removeEventListener('pageshow', openFromLocation);
+      window.removeEventListener('myrtine:open-diagnostic', openFromLocation);
     };
   }, []);
 
