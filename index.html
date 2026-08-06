@@ -396,6 +396,7 @@ const Nav = ({ onCTA }) => {
         <div className="nav-links">
           <a href="#comment" style={{color:C.navy,fontWeight:500,fontSize:'clamp(13px,1vw,15px)',textDecoration:'none',opacity:.75}}>Comment ça marche</a>
           <a href="#pourquoi" style={{color:C.navy,fontWeight:500,fontSize:'clamp(13px,1vw,15px)',textDecoration:'none',opacity:.75}}>Pourquoi Myrtine</a>
+          <a href="/a-propos/index.html" style={{color:C.navy,fontWeight:500,fontSize:'clamp(13px,1vw,15px)',textDecoration:'none',opacity:.75}}>À propos</a>
           <AnimBtn variant="navy" onClick={onCTA} style={{padding:'10px 20px',fontSize:'clamp(12px,0.9vw,14px)'}}>
             Diagnostic en moins de 48 heures
           </AnimBtn>
@@ -409,6 +410,7 @@ const Nav = ({ onCTA }) => {
       <div className={`mobile-menu ${menuOpen?'open':''}`}>
         <a href="#comment" onClick={()=>setMenuOpen(false)} style={{color:C.navy,fontWeight:500,fontSize:16,textDecoration:'none'}}>Comment ça marche</a>
         <a href="#pourquoi" onClick={()=>setMenuOpen(false)} style={{color:C.navy,fontWeight:500,fontSize:16,textDecoration:'none'}}>Pourquoi Myrtine</a>
+        <a href="/a-propos/index.html" onClick={()=>setMenuOpen(false)} style={{color:C.navy,fontWeight:500,fontSize:16,textDecoration:'none'}}>À propos</a>
         <AnimBtn variant="green" onClick={()=>{setMenuOpen(false);onCTA();}} style={{width:'100%',textAlign:'center',padding:'13px 20px'}}>
           Demandez votre diagnostic →
         </AnimBtn>
@@ -459,7 +461,7 @@ const Hero = ({ onCTA }) => {
           display:'inline-block',background:'rgba(74,122,46,0.1)',border:'1px solid rgba(74,122,46,0.25)',
           borderRadius:100,padding:'clamp(4px,0.5vh,7px) clamp(12px,2vw,20px)',marginBottom:'clamp(16px,3vh,28px)',
           fontSize:'clamp(11px,1vw,13px)',fontWeight:600,color:C.green,letterSpacing:'0.06em',textTransform:'uppercase'
-        }}><BlueText><GreenIN text="Made in France"/> — <GreenIN text="financements publics"/></BlueText></div>
+        }}><BlueText><GreenIN text="Financements publics"/> — <GreenIN text="Made in France / Europe"/></BlueText></div>
 
         <h1 style={{
           fontSize:'clamp(1.9rem,5.5vw,4.2rem)',fontWeight:700,color:C.navy,
@@ -480,6 +482,7 @@ const Hero = ({ onCTA }) => {
         </div>
         <div className="hero-btns" style={{display:'flex',gap:14,justifyContent:'center',flexWrap:'wrap',marginTop:12}}>
           <AnimBtn variant="ghost" href="#comment">Découvrir la démarche</AnimBtn>
+          <AnimBtn variant="ghost" href="/a-propos/index.html">À propos de Myrtine</AnimBtn>
         </div>
 
         <div className="stats-row" style={{marginTop:'clamp(36px,5vh,60px)',display:'flex',gap:'clamp(14px,3vw,48px)',justifyContent:'center',flexWrap:'wrap'}}>
@@ -1105,4 +1108,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
 </script>
 </body>
 </html>
-
