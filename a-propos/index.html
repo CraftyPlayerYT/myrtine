@@ -7,7 +7,7 @@
   <title>À propos — Myrtine</title>
   <meta name="description" content="Découvrez l’histoire de Myrtine et l’expérience d’Alice CHATEAU-MOREAU au service des projets et des territoires."/>
   <meta name="robots" content="index, follow"/>
-  <link rel="canonical" href="https://myrtine.fr/a-propos/"/>
+  <link rel="canonical" href="https://myrtine.fr/a-propos"/>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="icon" href="/favicon.png" sizes="any"/>
   <link rel="apple-touch-icon" href="/favicon.png"/>
@@ -334,13 +334,15 @@
       line-height: 1.78;
       text-wrap: pretty;
     }
-    .hero-actions {
+    .objective-actions {
+      position: relative;
+      z-index: 1;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: clamp(26px,4vw,42px);
+      margin-top: clamp(22px,3vw,34px);
     }
 
     .story-section {
@@ -361,6 +363,7 @@
       letter-spacing: .1em;
       text-transform: uppercase;
     }
+    .keep-with-colon { white-space: nowrap; }
     .section-heading h2 {
       color: var(--navy);
       font-size: clamp(1.75rem,3.6vw,3rem);
@@ -578,7 +581,7 @@
       .mobile-menu .nav-link, .mobile-menu .button { width: 100%; text-align: left; }
       .mobile-menu .button { justify-content: center; }
       .hero { min-height: auto; }
-      .hero-actions { flex-direction: column; align-items: stretch; width: min(400px,100%); margin-inline: auto; }
+      .objective-actions { flex-direction: column; align-items: stretch; width: min(400px,100%); margin-inline: auto; }
       .reveal-left, .reveal-right {
         transform: perspective(900px) translateY(40px) rotateX(12deg);
         transform-origin: 50% 100%;
@@ -637,7 +640,7 @@
     <div class="nav-links">
       <a class="nav-link" href="/#comment">Comment ça marche</a>
       <a class="nav-link" href="/#pourquoi">Pourquoi Myrtine</a>
-      <a class="nav-link" href="/a-propos/index.html" aria-current="page">À propos</a>
+      <a class="nav-link" href="/a-propos" aria-current="page">À propos</a>
       <a class="button button-navy nav-cta" href="/#diagnostic">Diagnostic</a>
     </div>
 
@@ -649,7 +652,7 @@
   <div class="mobile-menu" id="mobileMenu">
     <a class="nav-link" href="/#comment">Comment ça marche</a>
     <a class="nav-link" href="/#pourquoi">Pourquoi Myrtine</a>
-    <a class="nav-link" href="/a-propos/index.html" aria-current="page">À propos</a>
+    <a class="nav-link" href="/a-propos" aria-current="page">À propos</a>
     <a class="button button-green" href="/#diagnostic">Diagnostic</a>
   </div>
 
@@ -664,16 +667,6 @@
         </div>
         <h1>Un engagement qui change de forme, pas de cap.</h1>
         <p class="hero-lead">De l’administration publique à l’accompagnement des entreprises, une même conviction demeure : les projets utiles aux territoires méritent d’être mieux soutenus.</p>
-        <div class="hero-actions">
-          <a class="button button-green" href="/#diagnostic">Découvrir le diagnostic</a>
-          <a class="button button-ghost" href="https://www.linkedin.com/in/alice-chateau-moreau-41116a336" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir le profil LinkedIn d’Alice CHATEAU-MOREAU dans un nouvel onglet">
-            <img class="button-icon linkedin-official-logo" src="https://static.licdn.com/aero-v1/sc/h/4zqr0f9jf98vi2nkijyc3bex2" alt="" aria-hidden="true"/>
-            <span>Profil LinkedIn</span>
-            <svg class="external-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path d="M8 16 16 8M10 8h6v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>
       </div>
     </section>
 
@@ -696,6 +689,16 @@
 
           <article class="story-card story-card-navy story-card-wide reveal">
             <p class="objective"><strong>Mon objectif ?</strong> Vous aider à mobiliser pleinement les soutiens publics existants pour accélérer vos projets.</p>
+            <div class="objective-actions">
+          <a class="button button-green" href="/#diagnostic">Diagnostic Flash</a>
+          <a class="button button-ghost" href="https://www.linkedin.com/in/alice-chateau-moreau-41116a336" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir le profil LinkedIn d’Alice CHATEAU-MOREAU dans un nouvel onglet">
+            <img class="button-icon linkedin-official-logo" src="https://static.licdn.com/aero-v1/sc/h/4zqr0f9jf98vi2nkijyc3bex2" alt="" aria-hidden="true"/>
+            <span>Profil LinkedIn</span>
+            <svg class="external-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M8 16 16 8M10 8h6v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+            </div>
           </article>
         </div>
       </div>
@@ -704,7 +707,7 @@
     <section class="services-section" aria-label="Accompagnement Myrtine">
       <div class="section-inner">
         <div class="section-heading reveal">
-          <h2>Concrètement, Myrtine vous accompagne pour :</h2>
+          <h2>Concrètement, Myrtine vous accompagne <span class="keep-with-colon">pour&nbsp;:</span></h2>
         </div>
 
         <div class="services-grid">
