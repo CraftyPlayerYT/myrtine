@@ -1,0 +1,229 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #2B3870; --navy-dk: #1a2250;
+      --green: #4A7A2E; --green-lt: #6aae40;
+      --cream: #F5F3EE; --cream-dk: #E8E4DA;
+      --text: #1C2035; --muted: #6B7080;
+      --white: #FDFCF9;
+      --px: clamp(16px,5vw,120px);
+      --hero-pt: clamp(90px,10vh,160px);
+      /* Zones sûres (encoche / Dynamic Island / barres de nav gestuelles) */
+      --safe-t: env(safe-area-inset-top, 0px);
+      --safe-b: env(safe-area-inset-bottom, 0px);
+      --safe-l: env(safe-area-inset-left, 0px);
+      --safe-r: env(safe-area-inset-right, 0px);
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+    h1,h2,h3 { font-family: 'Lora', serif; }
+    ::selection { background: var(--green); color: #fff; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--cream-dk); }
+    ::-webkit-scrollbar-thumb { background: var(--navy); border-radius: 3px; }
+
+    /* Anti-sélection / anti-drag */
+    * { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-user-drag: none; }
+    input, textarea, [contenteditable] { -webkit-user-select: text; -moz-user-select: text; -ms-user-select: text; user-select: text; }
+    img { pointer-events: none; -webkit-user-drag: none; }
+
+    @keyframes floatBlob { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-14px) scale(1.04)} }
+    @keyframes modalIn   { from{opacity:0;transform:perspective(900px) translateY(36px) rotateX(7deg) scale(.95)} to{opacity:1;transform:perspective(900px) translateY(0) rotateX(0) scale(1)} }
+    @keyframes ripple    { to{transform:scale(4);opacity:0} }
+    @keyframes slideIn   { from{opacity:0;transform:translateY(18px) rotateX(3deg)} to{opacity:1;transform:translateY(0) rotateX(0)} }
+    @keyframes spin      { to{transform:rotate(360deg)} }
+
+    .reveal {
+      opacity: 0; transform: perspective(900px) translateY(60px) rotateX(22deg) scale(0.93);
+      transition: opacity .7s cubic-bezier(0.22,1,.36,1), transform .7s cubic-bezier(0.22,1,.36,1);
+      transform-origin: 50% 100%; will-change: transform, opacity;
+    }
+    .reveal.visible { opacity: 1; transform: perspective(900px) translateY(0) rotateX(0) scale(1); }
+    .reveal-left {
+      opacity: 0; transform: perspective(900px) translateX(-60px) rotateY(18deg);
+      transition: opacity .7s cubic-bezier(0.22,1,.36,1), transform .7s cubic-bezier(0.22,1,.36,1);
+      transform-origin: 100% 50%; will-change: transform, opacity;
+    }
+    .reveal-left.visible { opacity: 1; transform: perspective(900px) translateX(0) rotateY(0); }
+    .reveal-right {
+      opacity: 0; transform: perspective(900px) translateX(60px) rotateY(-18deg);
+      transition: opacity .7s cubic-bezier(0.22,1,.36,1), transform .7s cubic-bezier(0.22,1,.36,1);
+      transform-origin: 0% 50%; will-change: transform, opacity;
+    }
+    .reveal-right.visible { opacity: 1; transform: perspective(900px) translateX(0) rotateY(0); }
+    .scroll-tilt { will-change: transform; transition: transform .05s linear; }
+
+    .nav-links { display: flex; align-items: center; gap: clamp(14px,2vw,32px); }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; margin: 5px 0; transition: all .3s; }
+    .mobile-menu { display: none; }
+    .hero-section { min-height: 100vh; min-height: 100dvh; }
+
+    /* ══════════════════════════════════════════════════════════════
+       CADRAGE UNIVERSEL — paliers couvrant tous les smartphones,
+       tablettes, PC et téléviseurs (Apple, Samsung, Redmi/Xiaomi,
+       Google, etc). Le dimensionnement fluide (clamp/vw) ci-dessus
+       s'adapte déjà en continu ; ces paliers affinent la mise en page
+       (colonnes, menu, espacements) aux largeurs réelles du marché.
+       Tout écran non couvert explicitement hérite automatiquement du
+       palier le plus proche — c'est le cadrage automatique de secours.
+       ══════════════════════════════════════════════════════════════ */
+
+    /* Écran plié / cover (Galaxy Z Fold fermé, ~280-320px) */
+    @media (max-width: 319px) {
+      :root { --px: 10px; }
+      h1 { font-size: 1.5rem !important; }
+    }
+
+    /* Petits téléphones : iPhone SE 1G/5/5s, très anciens Android (320-359px) */
+    @media (min-width: 320px) and (max-width: 359px) {
+      :root { --px: 14px; }
+      h1 { font-size: clamp(1.5rem, 8vw, 1.9rem) !important; }
+    }
+
+    /* Téléphones compacts : Galaxy S/A/Redmi entrée de gamme, iPhone mini (360-389px) */
+    @media (min-width: 360px) and (max-width: 389px) {
+      :root { --px: 16px; }
+    }
+
+    /* Téléphones standards : iPhone 12/13/14/15/16, Pixel, Galaxy S21-S24 (390-411px) */
+    @media (min-width: 390px) and (max-width: 411px) {
+      :root { --px: 18px; }
+    }
+
+    /* Grands téléphones : Galaxy Note/S+/Ultra, Pixel XL, Redmi Note (412-479px) */
+    @media (min-width: 412px) and (max-width: 479px) {
+      :root { --px: 20px; }
+    }
+
+    /* Phablettes / Max / Pro Max / Plus : iPhone Pro Max, Galaxy Ultra (480-599px) */
+    @media (min-width: 480px) and (max-width: 599px) {
+      :root { --px: 24px; }
+    }
+
+    /* Pliables dépliés / petites tablettes (600-767px) */
+    @media (min-width: 600px) and (max-width: 767px) {
+      :root { --px: 32px; }
+    }
+
+    /* Tablettes portrait : iPad mini/standard, Galaxy Tab (768-819px) */
+    @media (min-width: 768px) and (max-width: 819px) {
+      :root { --px: 40px; }
+    }
+
+    /* Tablettes portrait grandes : iPad Air/Pro 11" (820-1023px) */
+    @media (min-width: 820px) and (max-width: 1023px) {
+      :root { --px: 48px; }
+    }
+
+    /* Tablettes paysage / iPad Pro 12.9" / petits laptops (1024-1279px) */
+    @media (min-width: 1024px) and (max-width: 1279px) {
+      :root { --px: 56px; }
+    }
+
+    /* Laptops standards (1280-1535px) */
+    @media (min-width: 1280px) and (max-width: 1535px) {
+      :root { --px: 72px; }
+    }
+
+    /* Desktop Full HD / laptops haute résolution (1536-1919px) */
+    @media (min-width: 1536px) and (max-width: 1919px) {
+      :root { --px: 96px; }
+    }
+
+    /* Desktop Full HD large (1920-2559px) */
+    @media (min-width: 1920px) and (max-width: 2559px) {
+      :root { --px: 120px; }
+    }
+
+    /* Moniteurs QHD / 1440p / petites TV (2560-3839px) */
+    @media (min-width: 2560px) {
+      html { font-size: 20px; }
+      :root { --px: 200px; }
+    }
+
+    /* TV 4K UHD (3840-7679px) */
+    @media (min-width: 3840px) {
+      html { font-size: 28px; }
+      :root { --px: 320px; }
+    }
+
+    /* TV 8K (7680px et plus) */
+    @media (min-width: 7680px) {
+      html { font-size: 44px; }
+      :root { --px: 480px; }
+    }
+
+    /* Layout structurel : tablette et en-dessous */
+    @media (max-width: 1024px) {
+      .why-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+      .why-cards { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Layout structurel : mobile (téléphones jusqu'aux phablettes) */
+    @media (max-width: 768px) {
+      .nav-links { display: none !important; }
+      .hamburger { display: block !important; }
+      .mobile-menu.open { display: flex; flex-direction: column; position: fixed; top: calc(70px + var(--safe-t)); left: 0; right: 0; background: rgba(245,243,238,0.98); backdrop-filter: blur(16px); padding: 20px calc(24px + var(--safe-r)) 28px calc(24px + var(--safe-l)); gap: 18px; border-bottom: 1px solid rgba(43,56,112,0.08); z-index: 190; }
+      .mobile-menu a, .mobile-menu button { width: 100%; text-align: left; }
+      .hero-btns { flex-direction: column !important; align-items: stretch !important; }
+      .hero-btns a, .hero-btns button { text-align: center !important; }
+      .steps-grid { grid-template-columns: 1fr !important; }
+      .why-cards { grid-template-columns: 1fr !important; }
+      .modal-inner { padding: 24px 20px !important; border-radius: 16px !important; }
+      .composer-inner { padding: 24px 20px !important; }
+    }
+    @media (max-width: 480px) {
+      .stats-row { flex-direction: column !important; align-items: center !important; }
+      .step-card { padding: 24px 20px !important; }
+    }
+
+    /* Diagnostic Flash : overlay Portal indépendant de #root et des animations de page */
+    .diagnostic-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 2147483647;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(10px,2vw,24px);
+      background: rgba(14,18,42,0.7);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      isolation: isolate;
+    }
+
+    /* Téléphones en mode paysage (hauteur réduite — toutes marques) */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .modal-inner { max-height: 94vh !important; max-height: 94dvh !important; }
+      .hero-section { min-height: auto !important; padding-top: calc(80px + var(--safe-t)) !important; padding-bottom: 32px !important; }
+    }
+
+    /* Appareils tactiles : neutraliser les effets de tilt liés au survol
+       (évite un tilt qui reste "collé" après un tap sur mobile/tablette) */
+    @media (hover: none) {
+      .scroll-tilt { transform: none !important; }
+      .reveal, .reveal-left, .reveal-right { transition-duration: .5s; }
+    }
+
+    /* Respect de la préférence "réduire les animations" (tous appareils) */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+      .reveal, .reveal-left, .reveal-right { opacity: 1 !important; transform: none !important; }
+    }
+
+
+    /* Transition ciblée entre l’accueil et /a-propos */
+    @keyframes pageEnter {
+      from { opacity: 0; transform: translateY(12px) scale(.992); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes pageExit {
+      from { opacity: 1; transform: translateY(0) scale(1); }
+      to   { opacity: 0; transform: translateY(-10px) scale(.992); }
+    }
+    html.js.page-entering #root { opacity: 0; transform: translateY(12px) scale(.992); }
+    html.js.page-ready #root { animation: pageEnter .42s cubic-bezier(.22,1,.36,1); }
+    html.js.page-leaving #root { animation: pageExit .24s ease both; pointer-events: none; }
+    @view-transition { navigation: auto; }
+    ::view-transition-old(root) { animation: pageExit .24s ease both; }
+    ::view-transition-new(root) { animation: pageEnter .42s cubic-bezier(.22,1,.36,1) both; }
