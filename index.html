@@ -876,7 +876,7 @@ const SubmitScreen = ({ answers, onClose }) => {
     const controller = new AbortController();
     const tid = setTimeout(() => controller.abort(), 180000); // 3 min max
 
-    fetch('https://serveur.myrtine.fr/diagnostic-flash', {
+    fetch('https://serveur.myrtine.fr/diagnostic-flash/site', {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       body: JSON.stringify(payload),
