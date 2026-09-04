@@ -498,6 +498,10 @@ const QUESTIONS = [
     {id:'depenses_types',label:'Sélectionnez tout ce qui s\'applique',type:'checkboxes',required:true,
      options:['Investissement matériel','Recherche & développement','Recrutement','Formation','Transition écologique','Numérique','Export','Autre']},
   ]},
+  {id:'informations_supplementaires',label:'Informations supplémentaires',fields:[
+    {id:'informations_supplementaires',label:'Précisions utiles sur votre projet (optionnel)',type:'textarea',required:false,
+     placeholder:'Contraintes techniques, autorisations déjà obtenues, partenaires, impacts attendus ou toute autre précision utile…'},
+  ]},
   {id:'nom',label:'Vos coordonnées',fields:[
     {id:'nom',label:'Nom',type:'text',placeholder:'Nom',required:true},
   ]},

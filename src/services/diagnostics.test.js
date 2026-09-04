@@ -19,6 +19,7 @@ test("adapte les noms du formulaire au contrat serveur", () => {
       budget_previsionnel: "500",
       calendrier: "",
       depenses_concernees: ["Machine"],
+      informations_supplementaires: "",
       nom: "",
       prenom: "",
       email: "",

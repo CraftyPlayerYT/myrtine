@@ -21,6 +21,7 @@ export function construirePayloadDiagnostic(answers) {
     budget_previsionnel: data.budget_montant || "",
     calendrier: data.calendrier || "",
     depenses_concernees: Array.isArray(data.depenses_types) ? data.depenses_types : [],
+    informations_supplementaires: data.informations_supplementaires || "",
     nom: data.nom || "",
     prenom: data.prenom || "",
     email: data.email || "",
